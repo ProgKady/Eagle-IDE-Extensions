@@ -1,0 +1,13 @@
+[
+  {
+    "id": "my-first-plugin",
+    "name": "My First Plugin",
+    "description": "شرح بسيط للإضافة",
+    "version": "1.0.0",
+    "author": "Your Name",
+    "category": "editor",
+    "downloads": 42,
+    "download_url": "https://github.com/ahmedelkady/extensions/releases/download/v1.0/my-first-plugin.jar",
+    "icon_url": ""
+  }
+]

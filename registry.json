@@ -2,13 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "version": 1,
   "updated": "2026-09-30",
-  "owner": "personal",
+  "owner": "Ahmed Elkady",
   "skills": [
     {
       "name": "web-scraper",
       "description": "Extract structured data from a URL using CSS selectors. Returns JSON.",
       "icon": "🕷",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "web",
         "scraping",
@@ -54,7 +54,7 @@
       "name": "json-formatter",
       "description": "Pretty-print, minify, validate, or convert JSON",
       "icon": "📐",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "json",
         "utility",
@@ -102,7 +102,7 @@
       "name": "code-reviewer",
       "description": "Review code for correctness, security, readability, and edge cases",
       "icon": "🔍",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "code",
         "review",
@@ -125,7 +125,7 @@
       "name": "sql-builder",
       "description": "Build and explain SQL from natural language; prefer safe parameterized style",
       "icon": "🗄",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "sql",
         "database",
@@ -147,7 +147,7 @@
       "name": "git-helper",
       "description": "Git status, commits, branches, and PR descriptions in plain language",
       "icon": "🌿",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "git",
         "github",
@@ -170,7 +170,7 @@
       "name": "arabic-docs",
       "description": "Write and edit technical docs in Egyptian Arabic or MSA with clear structure",
       "icon": "📝",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "docs",
         "arabic",
@@ -193,7 +193,7 @@
       "name": "api-designer",
       "description": "Design REST/JSON APIs: routes, status codes, errors, and example payloads",
       "icon": "🔌",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "api",
         "rest",
@@ -216,7 +216,7 @@
       "name": "debug-buddy",
       "description": "Systematic debugging: reproduce, isolate, hypothesize, fix, verify",
       "icon": "🐛",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "debug",
         "errors",
@@ -238,7 +238,7 @@
       "name": "regex-lab",
       "description": "Write, explain, and test regular expressions with examples",
       "icon": "🔤",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "regex",
         "text",
@@ -260,7 +260,7 @@
       "name": "commit-writer",
       "description": "Write conventional commit messages from a diff or change summary",
       "icon": "✍️",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "git",
         "commits",
@@ -282,7 +282,7 @@
       "name": "test-writer",
       "description": "Write unit and integration tests with clear arrange-act-assert structure",
       "icon": "🧪",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "testing",
         "unit-test",
@@ -305,7 +305,7 @@
       "name": "refactor-guide",
       "description": "Safe refactoring steps: extract, rename, simplify without behavior change",
       "icon": "♻️",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "refactor",
         "clean-code",
@@ -327,7 +327,7 @@
       "name": "security-check",
       "description": "Quick security review: secrets, injection, auth, XSS, unsafe defaults",
       "icon": "🔒",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "security",
         "owasp",
@@ -349,7 +349,7 @@
       "name": "docker-helper",
       "description": "Dockerfile, compose, and container debugging tips",
       "icon": "🐳",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "docker",
         "containers",
@@ -371,7 +371,7 @@
       "name": "prompt-engineer",
       "description": "Improve prompts for clarity, constraints, and better model output",
       "icon": "🎯",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "prompt",
         "llm",
@@ -393,7 +393,7 @@
       "name": "changelog-writer",
       "description": "Turn commits or notes into a clear changelog for users",
       "icon": "📋",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "docs",
         "release",
@@ -415,7 +415,7 @@
       "name": "performance-tuner",
       "description": "Find and fix performance bottlenecks in code and queries",
       "icon": "⚡",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "performance",
         "optimization",
@@ -437,7 +437,7 @@
       "name": "ui-copy",
       "description": "Write short UI microcopy: buttons, empty states, errors, tooltips",
       "icon": "💬",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "ux",
         "copy",
@@ -460,7 +460,7 @@
       "name": "env-setup",
       "description": "Help set up .env, config, and local dev environment safely",
       "icon": "⚙️",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "env",
         "config",
@@ -482,7 +482,7 @@
       "name": "skill-author",
       "description": "Create and improve agent skills (SKILL.md / registry entries) for your own catalog",
       "icon": "🛠️",
-      "author": "me",
+      "author": "Ahmed Elkady",
       "tags": [
         "skills",
         "authoring",

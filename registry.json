@@ -1,0 +1,504 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": 1,
+  "updated": "2026-09-30",
+  "owner": "personal",
+  "skills": [
+    {
+      "name": "web-scraper",
+      "description": "Extract structured data from a URL using CSS selectors. Returns JSON.",
+      "icon": "🕷",
+      "author": "me",
+      "tags": [
+        "web",
+        "scraping",
+        "utility"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "web-scraper",
+        "icon": "🕷",
+        "description": "Scrape structured data from any URL",
+        "trigger": "scrape|extract|crawl|اسحب|استخرج",
+        "body": "# Web Scraper\n\nWhen the user wants data from a webpage, call `scrape_page` with the URL and CSS selectors. Return clean JSON.\n\n## Example\n- User: Get title and price from https://example.com/item\n- Call: scrape_page({ url: '...', selectors: { title: 'h1', price: '.price' } })",
+        "tools": [
+          {
+            "name": "scrape_page",
+            "description": "Fetch a URL and extract text via CSS selectors",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "selectors": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "url",
+                "selectors"
+              ]
+            },
+            "handler": "const r = await fetch(input.url); const html = await r.text(); const doc = new DOMParser().parseFromString(html, 'text/html'); const out = {}; for (const k in input.selectors) { const el = doc.querySelector(input.selectors[k]); out[k] = el ? el.textContent.trim() : null; } return JSON.stringify(out);"
+          }
+        ],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "json-formatter",
+      "description": "Pretty-print, minify, validate, or convert JSON",
+      "icon": "📐",
+      "author": "me",
+      "tags": [
+        "json",
+        "utility",
+        "format"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "json-formatter",
+        "icon": "📐",
+        "description": "Format and validate JSON",
+        "trigger": "json|pretty|minify|validate json",
+        "body": "# JSON Formatter\n\nHelp format, minify, or validate JSON the user pastes.\n\n## Rules\n- On invalid JSON: show the parse error and the approximate location.\n- Pretty: 2-space indent. Minify: no whitespace.\n- Never invent fields the user did not provide.",
+        "tools": [
+          {
+            "name": "format_json",
+            "description": "Pretty-print or minify a JSON string",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "mode": {
+                  "type": "string",
+                  "enum": [
+                    "pretty",
+                    "minify",
+                    "validate"
+                  ]
+                }
+              },
+              "required": [
+                "text",
+                "mode"
+              ]
+            },
+            "handler": "try { const o = JSON.parse(input.text); if (input.mode === 'validate') return JSON.stringify({ ok: true }); if (input.mode === 'minify') return JSON.stringify(o); return JSON.stringify(o, null, 2); } catch (e) { return JSON.stringify({ ok: false, error: String(e.message || e) }); }"
+          }
+        ],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "code-reviewer",
+      "description": "Review code for correctness, security, readability, and edge cases",
+      "icon": "🔍",
+      "author": "me",
+      "tags": [
+        "code",
+        "review",
+        "quality",
+        "security"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "code-reviewer",
+        "icon": "🔍",
+        "description": "Structured code review",
+        "trigger": "review|code review|راجع|مراجعة",
+        "body": "# Code Reviewer\n\nWhen reviewing code:\n1. Correctness & bugs\n2. Security (injection, secrets, auth)\n3. Readability & naming\n4. Performance only when relevant\n5. Tests / edge cases missing\n\n## Output format\n- Summary (2–4 lines)\n- Critical issues\n- Suggestions\n- Optional patch snippets\nBe direct. Prefer concrete line-level feedback.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "sql-builder",
+      "description": "Build and explain SQL from natural language; prefer safe parameterized style",
+      "icon": "🗄",
+      "author": "me",
+      "tags": [
+        "sql",
+        "database",
+        "query"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "sql-builder",
+        "icon": "🗄",
+        "description": "Natural language to SQL",
+        "trigger": "sql|query|select|join|استعلام",
+        "body": "# SQL Builder\n\nTurn user requests into clear SQL.\n\n## Rules\n- State assumed dialect (PostgreSQL / MySQL / SQLite) if not given.\n- Prefer explicit column lists over SELECT *.\n- Warn about full table scans and missing indexes when relevant.\n- Never encourage string-concatenated user input in queries; show bind parameters.\n- Include a short explanation of joins and filters.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "git-helper",
+      "description": "Git status, commits, branches, and PR descriptions in plain language",
+      "icon": "🌿",
+      "author": "me",
+      "tags": [
+        "git",
+        "github",
+        "workflow",
+        "pr"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "git-helper",
+        "icon": "🌿",
+        "description": "Git and PR workflow helper",
+        "trigger": "git|commit|branch|pull request|PR|merge",
+        "body": "# Git Helper\n\nUse project git tools when available (GitStatus, GitCommit, GitPull, GitPush, GitHub).\n\n## Guidelines\n- Summarize status before suggesting a commit message.\n- Commit messages: short imperative subject; optional body with why.\n- Never force-push unless the user explicitly asks.\n- PR title = what changed; body = why + how to test.\n- If tools are missing, give exact shell commands only.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arabic-docs",
+      "description": "Write and edit technical docs in Egyptian Arabic or MSA with clear structure",
+      "icon": "📝",
+      "author": "me",
+      "tags": [
+        "docs",
+        "arabic",
+        "writing",
+        "readme"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "arabic-docs",
+        "icon": "📝",
+        "description": "Arabic technical documentation",
+        "trigger": "توثيق|مستند|README|docs|documentation|عربي",
+        "body": "# Arabic Docs\n\nWhen writing docs in Arabic:\n1. Use Egyptian or MSA as the user prefers.\n2. Short paragraphs, headings, bullet lists.\n3. Keep code, paths, APIs, and identifiers in English.\n4. Prefer practical examples over abstract theory.\n5. End with a quick how to run / verify section when relevant.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "api-designer",
+      "description": "Design REST/JSON APIs: routes, status codes, errors, and example payloads",
+      "icon": "🔌",
+      "author": "me",
+      "tags": [
+        "api",
+        "rest",
+        "http",
+        "backend"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "api-designer",
+        "icon": "🔌",
+        "description": "REST API design assistant",
+        "trigger": "api|endpoint|rest|route|swagger|openapi",
+        "body": "# API Designer\n\nHelp design clean HTTP APIs.\n\n## Checklist\n- Resource-oriented paths\n- Correct methods and status codes\n- Consistent error body: { error, message, details? }\n- Pagination, filtering, sorting conventions\n- Auth notes (Bearer / API key) without inventing secrets\n- One request + response example per endpoint\nPrefer OpenAPI-friendly naming.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "debug-buddy",
+      "description": "Systematic debugging: reproduce, isolate, hypothesize, fix, verify",
+      "icon": "🐛",
+      "author": "me",
+      "tags": [
+        "debug",
+        "errors",
+        "troubleshooting"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "debug-buddy",
+        "icon": "🐛",
+        "description": "Structured debugging partner",
+        "trigger": "bug|error|crash|stack trace|debug|مشكلة|خطأ",
+        "body": "# Debug Buddy\n\nWhen fixing bugs:\n1. Restate the failure in one sentence.\n2. List likely causes (ranked).\n3. Ask for or use logs, stack traces, and minimal repro.\n4. Propose the smallest fix first.\n5. Suggest how to verify (test or manual steps).\nDo not guess file contents — read the project when tools allow.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "regex-lab",
+      "description": "Write, explain, and test regular expressions with examples",
+      "icon": "🔤",
+      "author": "me",
+      "tags": [
+        "regex",
+        "text",
+        "utility"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "regex-lab",
+        "icon": "🔤",
+        "description": "Regex authoring and explanation",
+        "trigger": "regex|regexp|pattern|تعبير منتظم",
+        "body": "# Regex Lab\n\nProvide working regex with:\n- Pattern\n- Flags if needed\n- Plain-language explanation of each part\n- 3 match examples and 2 non-match examples\nDefault to JavaScript-style regex unless the user specifies another engine.\nWarn about catastrophic backtracking on complex patterns.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "commit-writer",
+      "description": "Write conventional commit messages from a diff or change summary",
+      "icon": "✍️",
+      "author": "me",
+      "tags": [
+        "git",
+        "commits",
+        "conventional-commits"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "commit-writer",
+        "icon": "✍️",
+        "description": "Conventional commit messages",
+        "trigger": "commit message|conventional commit|رسالة كوميت",
+        "body": "# Commit Writer\n\nProduce Conventional Commits style messages:\n\n```\ntype(scope): short summary\n\noptional body\n```\n\nTypes: feat, fix, docs, style, refactor, test, chore, perf, ci.\nSubject: imperative, ~50 chars, no trailing period.\nIf multiple concerns exist, suggest splitting commits.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "test-writer",
+      "description": "Write unit and integration tests with clear arrange-act-assert structure",
+      "icon": "🧪",
+      "author": "me",
+      "tags": [
+        "testing",
+        "unit-test",
+        "jest",
+        "pytest"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "test-writer",
+        "icon": "🧪",
+        "description": "Test generation assistant",
+        "trigger": "test|unit test|coverage|pytest|jest|vitest",
+        "body": "# Test Writer\n\nWhen adding tests:\n1. Detect the project test runner from existing files.\n2. Cover happy path + 1–2 edge cases + failure path.\n3. Use Arrange / Act / Assert comments only when helpful.\n4. Mock external I/O; do not hit real network/DB unless asked.\n5. Name tests as behavior: it('returns 404 when id missing').",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "refactor-guide",
+      "description": "Safe refactoring steps: extract, rename, simplify without behavior change",
+      "icon": "♻️",
+      "author": "me",
+      "tags": [
+        "refactor",
+        "clean-code",
+        "architecture"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "refactor-guide",
+        "icon": "♻️",
+        "description": "Incremental safe refactors",
+        "trigger": "refactor|cleanup|simplify|أعد هيكلة",
+        "body": "# Refactor Guide\n\nPrefer small, verifiable steps:\n1. Identify smell (duplication, long function, unclear name).\n2. Propose one change at a time.\n3. Keep behavior identical unless the user wants a redesign.\n4. Suggest tests to run after each step.\nAvoid big-bang rewrites unless explicitly requested.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "security-check",
+      "description": "Quick security review: secrets, injection, auth, XSS, unsafe defaults",
+      "icon": "🔒",
+      "author": "me",
+      "tags": [
+        "security",
+        "owasp",
+        "audit"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "security-check",
+        "icon": "🔒",
+        "description": "Lightweight security pass",
+        "trigger": "security|vuln|xss|injection|secret|أمان",
+        "body": "# Security Check\n\nScan the discussed code or diff for:\n- Hardcoded secrets / tokens\n- Injection (SQL, command, template)\n- XSS and unsafe HTML\n- Broken auth / missing authorization checks\n- Insecure deserialization or eval\n- Overly permissive CORS\n\nReport severity: Critical / High / Medium / Low with a fix hint each.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "docker-helper",
+      "description": "Dockerfile, compose, and container debugging tips",
+      "icon": "🐳",
+      "author": "me",
+      "tags": [
+        "docker",
+        "containers",
+        "devops"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "docker-helper",
+        "icon": "🐳",
+        "description": "Docker and Compose assistant",
+        "trigger": "docker|dockerfile|compose|container|صورة",
+        "body": "# Docker Helper\n\nHelp with Dockerfiles and compose files:\n- Multi-stage builds when useful\n- Non-root user, minimal base images\n- Correct WORKDIR, COPY order for layer cache\n- Healthchecks and env via compose, not baked secrets\n- Explain common errors (exit codes, port binds, volume perms)\nGive copy-pasteable snippets the user can edit.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "prompt-engineer",
+      "description": "Improve prompts for clarity, constraints, and better model output",
+      "icon": "🎯",
+      "author": "me",
+      "tags": [
+        "prompt",
+        "llm",
+        "ai"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "prompt-engineer",
+        "icon": "🎯",
+        "description": "Prompt improvement",
+        "trigger": "prompt|system prompt|improve prompt|برومبت",
+        "body": "# Prompt Engineer\n\nRewrite prompts to be:\n- Specific about role, task, format, and constraints\n- Explicit about what not to do\n- Structured (sections / bullets) when the task is complex\nProvide: improved prompt + short rationale of changes.\nKeep the user language (Arabic or English).",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "changelog-writer",
+      "description": "Turn commits or notes into a clear changelog for users",
+      "icon": "📋",
+      "author": "me",
+      "tags": [
+        "docs",
+        "release",
+        "changelog"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "changelog-writer",
+        "icon": "📋",
+        "description": "User-facing changelog",
+        "trigger": "changelog|release notes|ملاحظات الإصدار",
+        "body": "# Changelog Writer\n\nOrganize changes under:\n- Added\n- Changed\n- Fixed\n- Removed / Deprecated\n\nWrite for humans, not only developers. Group related items. Avoid internal ticket IDs unless asked.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "performance-tuner",
+      "description": "Find and fix performance bottlenecks in code and queries",
+      "icon": "⚡",
+      "author": "me",
+      "tags": [
+        "performance",
+        "optimization",
+        "profiling"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "performance-tuner",
+        "icon": "⚡",
+        "description": "Performance optimization guide",
+        "trigger": "performance|slow|optimize|latency|أداء|بطيء",
+        "body": "# Performance Tuner\n\nApproach:\n1. Define the metric (time, memory, queries).\n2. Locate the hot path before optimizing.\n3. Prefer algorithmic fixes over micro-tweaks.\n4. Measure again after each change.\nMention caching, batching, indexes, and N+1 queries when relevant.\nDo not optimize unread code — inspect first.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "ui-copy",
+      "description": "Write short UI microcopy: buttons, empty states, errors, tooltips",
+      "icon": "💬",
+      "author": "me",
+      "tags": [
+        "ux",
+        "copy",
+        "ui",
+        "arabic"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "ui-copy",
+        "icon": "💬",
+        "description": "Product UI microcopy",
+        "trigger": "microcopy|button text|empty state|error message|نص واجهة",
+        "body": "# UI Copy\n\nWrite concise interface text:\n- Buttons: verb + object when needed (Save changes)\n- Errors: what happened + what to do next\n- Empty states: why empty + primary action\nSupport Arabic and English. Match the product tone the user describes (formal / friendly).",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "env-setup",
+      "description": "Help set up .env, config, and local dev environment safely",
+      "icon": "⚙️",
+      "author": "me",
+      "tags": [
+        "env",
+        "config",
+        "devtools"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "env-setup",
+        "icon": "⚙️",
+        "description": "Local environment setup",
+        "trigger": "env|.env|config|setup|بيئة|إعداد",
+        "body": "# Env Setup\n\nHelp with local configuration:\n- List required variables with example values (never real secrets)\n- Distinguish .env / .env.example / secrets managers\n- Remind not to commit secrets\n- Suggest minimal steps: install deps → copy example env → run\nMatch the stack detected in the project when possible.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "skill-author",
+      "description": "Create and improve agent skills (SKILL.md / registry entries) for your own catalog",
+      "icon": "🛠️",
+      "author": "me",
+      "tags": [
+        "skills",
+        "authoring",
+        "meta"
+      ],
+      "source": "inline",
+      "skill": {
+        "name": "skill-author",
+        "icon": "🛠️",
+        "description": "Author skills for this registry",
+        "trigger": "create skill|new skill|SKILL.md|skill registry",
+        "body": "# Skill Author\n\nHelp the user write a new skill for their personal registry.\n\n## Skill shape\n- Clear name and one-line description\n- trigger keywords\n- body: when to use + steps + constraints\n- optional tools with JSON Schema parameters\n\n## Quality bar\n- Specific triggers (not vague)\n- Actionable steps for the agent\n- No third-party branding unless the user wants it\n- Prefer inline skills unless files live on their repo",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    }
+  ]
+}

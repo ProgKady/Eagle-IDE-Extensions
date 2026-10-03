@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "version": 3,
+  "version": 4,
   "updated": "2026-10-03",
   "owner": "Ahmed Elkady",
   "packages": [
@@ -416,6 +416,42 @@
         "skill-author",
         "unit-conversion",
         "web-scraper"
+      ]
+    },
+    {
+      "id": "embedded-arduino",
+      "name": "Arduino & Embedded",
+      "description": "Arduino, ESP32/ESP8266, sensors, motors, PlatformIO, IoT, and hobby electronics safety",
+      "icon": "🔌",
+      "skills": [
+        "arduino-analog-digital",
+        "arduino-bluetooth",
+        "arduino-c-cpp",
+        "arduino-code-structure",
+        "arduino-debug",
+        "arduino-display",
+        "arduino-i2c-spi",
+        "arduino-interrupts",
+        "arduino-ir-rf",
+        "arduino-libraries",
+        "arduino-ota",
+        "arduino-pid-lite",
+        "arduino-power",
+        "arduino-protocols-iot",
+        "arduino-pwm-motors",
+        "arduino-robotics-basic",
+        "arduino-rtos-lite",
+        "arduino-safety",
+        "arduino-sensors",
+        "arduino-serial",
+        "arduino-shields",
+        "arduino-sketch",
+        "arduino-storage",
+        "arduino-test-bench",
+        "arduino-wiring",
+        "esp32-mqtt",
+        "esp32-wifi",
+        "platformio-helper"
       ]
     }
   ],
@@ -7546,6 +7582,702 @@
         "scripts": {}
       },
       "package": "office-business"
+    },
+    {
+      "name": "arduino-sketch",
+      "description": "Write and structure Arduino sketches (.ino) with clear setup/loop",
+      "icon": "🔌",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "embedded",
+        "c++",
+        "firmware",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-sketch",
+        "icon": "🔌",
+        "description": "Write and structure Arduino sketches (.ino) with clear setup/loop",
+        "trigger": "arduino|sketch|.ino|setup loop|سكتش|أردوينو",
+        "body": "# Arduino Sketch\nHelp write Arduino sketches:\n- Clear `setup()` / `loop()` structure.\n- Prefer readable pin names (`const int LED_PIN = 13`).\n- Non-blocking patterns over long `delay()` when responsiveness matters.\n- Serial.begin + debug prints for bring-up.\n- Match board voltage/pin limits the user states (Uno/Nano/Mega/ESP…).\n- Never invent wiring that could short power rails — ask when unclear.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-wiring",
+      "description": "Pin mapping, wiring notes, and power safety for Arduino projects",
+      "icon": "🔗",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "wiring",
+        "electronics",
+        "hardware",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-wiring",
+        "icon": "🔗",
+        "description": "Pin mapping, wiring notes, and power safety for Arduino projects",
+        "trigger": "wiring|pinout|connect|توصيل|رجلات|دائرة",
+        "body": "# Arduino Wiring\nGuide physical connections:\n- List each wire: component pin → board pin.\n- Call out 3.3V vs 5V logic level risks.\n- Current limits on GPIO; use transistors/drivers for motors/loads.\n- Common ground required.\n- Suggest series resistors for LEDs.\n- Warn before any connection that could damage the board.\n- Prefer diagrams as text pin tables when no drawing tool.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-sensors",
+      "description": "Common sensors: DHT, HC-SR04, MPU6050, analog sensors, debounce",
+      "icon": "📡",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "sensors",
+        "embedded",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-sensors",
+        "icon": "📡",
+        "description": "Common sensors: DHT, HC-SR04, MPU6050, analog sensors, debounce",
+        "trigger": "sensor|dht|ultrasonic|mpu6050|analogRead|حساس|مستشعر",
+        "body": "# Arduino Sensors\nSensor integration:\n- Read datasheet timing and voltage requirements.\n- Libraries: prefer well-known ones; show include + minimal example.\n- Average/filter noisy analog reads when useful.\n- Units and calibration notes.\n- Debounce mechanical buttons.\n- I2C address conflicts checklist.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-serial",
+      "description": "Serial debugging, protocols, and PC communication",
+      "icon": "📎",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "serial",
+        "debug",
+        "uart",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-serial",
+        "icon": "📎",
+        "description": "Serial debugging, protocols, and PC communication",
+        "trigger": "serial|uart|baud|Serial.println|سيريال",
+        "body": "# Arduino Serial\nSerial workflows:\n- Baud rate match on both sides.\n- `Serial.print` vs `println`; avoid flooding loop.\n- Parse simple commands from PC.\n- Binary vs text protocols tradeoffs.\n- USB-serial tips (port, drivers) at a high level.\n- For binary packets: length, checksum basics.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-pwm-motors",
+      "description": "PWM, servos, DC motors, and motor driver basics (L298N etc.)",
+      "icon": "⚙️",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "motors",
+        "pwm",
+        "robotics",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-pwm-motors",
+        "icon": "⚙️",
+        "description": "PWM, servos, DC motors, and motor driver basics (L298N etc.)",
+        "trigger": "pwm|servo|motor|l298|stepper|موتور|محرك",
+        "body": "# PWM & Motors\nMotion control basics:\n- `analogWrite` / LEDC (ESP) for PWM.\n- Servo library angles and power supply notes (don't power big servos from board 5V).\n- DC motor drivers (direction + enable).\n- Stepper high-level (steps, drivers like A4988).\n- Separate motor supply + common ground.\n- Start with low duty cycle when testing.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-i2c-spi",
+      "description": "I2C and SPI device integration on Arduino",
+      "icon": "🚌",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "i2c",
+        "spi",
+        "embedded",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-i2c-spi",
+        "icon": "🚌",
+        "description": "I2C and SPI device integration on Arduino",
+        "trigger": "i2c|spi|wire|chip select|أوليات",
+        "body": "# I2C & SPI\nBus devices:\n- I2C: SDA/SCL, pull-ups, addresses, `Wire` scanner idea.\n- SPI: MOSI/MISO/SCK/CS, mode (CPOL/CPHA).\n- Level shifting when needed.\n- Bus speed limits and wire length practicality.\n- Minimal read/write register examples.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "esp32-wifi",
+      "description": "ESP32/ESP8266 WiFi, web server, and IoT connectivity",
+      "icon": "📶",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "esp32",
+        "esp8266",
+        "wifi",
+        "iot",
+        "arduino",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "esp32-wifi",
+        "icon": "📶",
+        "description": "ESP32/ESP8266 WiFi, web server, and IoT connectivity",
+        "trigger": "esp32|esp8266|wifi|iot|ويب سيرفر|واي فاي",
+        "body": "# ESP32 WiFi & IoT\nConnected boards:\n- WiFi connect with timeout and reconnect strategy.\n- Don't hardcode secrets in public repos — use credentials header/secrets.\n- Simple HTTP server or client examples.\n- Deep sleep awareness for battery projects.\n- 3.3V only pins on ESP — no 5V input.\n- Board variant differences (DevKit, NodeMCU) called out when relevant.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "esp32-mqtt",
+      "description": "MQTT publish/subscribe for ESP/Arduino IoT",
+      "icon": "📨",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "mqtt",
+        "esp32",
+        "iot",
+        "arduino",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "esp32-mqtt",
+        "icon": "📨",
+        "description": "MQTT publish/subscribe for ESP/Arduino IoT",
+        "trigger": "mqtt|mosquitto|pubsub|مكيوتتي",
+        "body": "# MQTT for ESP\nMQTT patterns:\n- Broker, topic naming, QoS basics.\n- Pub sensor data; sub for commands.\n- Last will / retained messages when useful.\n- TLS note for production.\n- Reconnect on WiFi drop.\n- Keep payloads small and versioned.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "platformio-helper",
+      "description": "PlatformIO project structure, libs, and upload",
+      "icon": "🛠️",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "platformio",
+        "arduino",
+        "embedded",
+        "tooling",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "platformio-helper",
+        "icon": "🛠️",
+        "description": "PlatformIO project structure, libs, and upload",
+        "trigger": "platformio|pio|platformio.ini",
+        "body": "# PlatformIO\nPIO workflows:\n- `platformio.ini` envs and board IDs.\n- lib_deps vs Arduino Library Manager.\n- Build/upload/monitor commands.\n- Multiple environments (uno vs esp32).\n- Troubleshooting upload (port, baud, boot mode).\n- Prefer PIO when user already uses it.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-interrupts",
+      "description": "Interrupts, timers, and non-blocking timing",
+      "icon": "⚡",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "interrupts",
+        "timers",
+        "embedded",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-interrupts",
+        "icon": "⚡",
+        "description": "Interrupts, timers, and non-blocking timing",
+        "trigger": "interrupt|attachInterrupt|timer|millis|مقاطعة",
+        "body": "# Interrupts & Timing\nTiming without blocking:\n- Prefer `millis()` state machines over long `delay()`.\n- Interrupts: ISRs short; `volatile` flags.\n- What not to do inside ISR (Serial, malloc, long work).\n- Debounce with time checks.\n- Hardware timer high-level when needed.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-power",
+      "description": "Power supply, battery, and low-power Arduino/ESP design",
+      "icon": "🔋",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "power",
+        "battery",
+        "electronics",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-power",
+        "icon": "🔋",
+        "description": "Power supply, battery, and low-power Arduino/ESP design",
+        "trigger": "battery|power|low power|sleep|بطارية|طاقة",
+        "body": "# Power Design\nPowering projects safely:\n- Voltage regulators and headroom.\n- Battery chemistry caveats (user must apply safe practices).\n- Measure current draw roughly.\n- Sleep modes on ESP/AVR high-level.\n- Never reverse polarity; fuse/protection suggestions.\n- USB vs external supply coexistence.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-display",
+      "description": "LCD, OLED (SSD1306), and simple displays",
+      "icon": "📺",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "display",
+        "oled",
+        "lcd",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-display",
+        "icon": "📺",
+        "description": "LCD, OLED (SSD1306), and simple displays",
+        "trigger": "oled|ssd1306|lcd|display|شاشه|شاشة",
+        "body": "# Displays\nScreens on Arduino:\n- I2C OLED (SSD1306) minimal init + text.\n- Character LCD 16x2 wiring/library.\n- Font/size limits on small MCUs.\n- Avoid heavy graphics on Uno.\n- Update UI without blocking sensors.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-storage",
+      "description": "EEPROM, SD cards, and saving settings",
+      "icon": "💾",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "eeprom",
+        "sd",
+        "storage",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-storage",
+        "icon": "💾",
+        "description": "EEPROM, SD cards, and saving settings",
+        "trigger": "eeprom|sd card|save settings|تخزين",
+        "body": "# Storage\nPersist data:\n- EEPROM wear awareness; minimize writes.\n- Struct save/load patterns.\n- SD: SPI, file append for logs.\n- Fail if card missing — don't hang silently.\n- Format and size limits.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-debug",
+      "description": "Debug stuck sketches, brownouts, and random resets",
+      "icon": "🐛",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "debug",
+        "embedded",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-debug",
+        "icon": "🐛",
+        "description": "Debug stuck sketches, brownouts, and random resets",
+        "trigger": "arduino debug|reset|brownout|السكتش مش شغال",
+        "body": "# Arduino Debug\nSystematic bring-up:\n1. Confirm board/port/baud.\n2. Blink test.\n3. Isolate peripherals (unplug modules).\n4. Watch Serial output.\n5. Power quality (brownout → random reset).\n6. Stack/memory on small AVRs.\n- Ask for schematic/code symptoms before guessing.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-libraries",
+      "description": "Choosing and using Arduino libraries responsibly",
+      "icon": "📚",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "libraries",
+        "deps",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-libraries",
+        "icon": "📚",
+        "description": "Choosing and using Arduino libraries responsibly",
+        "trigger": "arduino library|library manager|مكتبة أردوينو",
+        "body": "# Arduino Libraries\nLibraries:\n- Prefer maintained libs with examples.\n- Check board compatibility (AVR vs ESP).\n- Namespace/conflict issues.\n- Vendor libs vs community.\n- Minimal example before integrating into full project.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-robotics-basic",
+      "description": "Simple robot behaviors: line follow, obstacle avoid",
+      "icon": "🤖",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "robotics",
+        "motors",
+        "sensors",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-robotics-basic",
+        "icon": "🤖",
+        "description": "Simple robot behaviors: line follow, obstacle avoid",
+        "trigger": "robot|line follow|obstacle|روبوت",
+        "body": "# Basic Robotics\nSimple mobile robots:\n- Differential drive control.\n- Ultrasonic obstacle avoid state machine.\n- Line sensor binary follow logic.\n- Start slow; tune gains empirically.\n- Keep code modular: sensors / control / actuators.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-pid-lite",
+      "description": "Introductory PID control for Arduino",
+      "icon": "📉",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "control",
+        "pid",
+        "robotics",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-pid-lite",
+        "icon": "📉",
+        "description": "Introductory PID control for Arduino",
+        "trigger": "pid|control loop|تحكم",
+        "body": "# PID Lite\nPID intro:\n- Error, P, I, D in plain language.\n- Sample time importance.\n- Anti-windup concept.\n- Tuning order (P then D then I) rough guide.\n- Safety limits on output.\n- Not for unsafe machinery without proper engineering.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-analog-digital",
+      "description": "ADC, DAC, thresholds, and digital I/O best practices",
+      "icon": "🔢",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "adc",
+        "gpio",
+        "electronics",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-analog-digital",
+        "icon": "🔢",
+        "description": "ADC, DAC, thresholds, and digital I/O best practices",
+        "trigger": "analogRead|digitalWrite|adc|gpio|أنالوج",
+        "body": "# Analog & Digital I/O\nGPIO/ADC:\n- `pinMode` correctness.\n- INPUT_PULLUP for buttons.\n- ADC reference and resolution (10-bit AVR vs 12-bit ESP).\n- Map/constrain values.\n- Avoid floating inputs.\n- PWM is not true DAC — state that clearly.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-protocols-iot",
+      "description": "HTTP, NTP, and simple cloud IoT patterns on ESP",
+      "icon": "☁️",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "esp32",
+        "iot",
+        "http",
+        "arduino",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-protocols-iot",
+        "icon": "☁️",
+        "description": "HTTP, NTP, and simple cloud IoT patterns on ESP",
+        "trigger": "esp http|ntp|thingspeak|blynk|سحابة",
+        "body": "# IoT Protocols\nBeyond MQTT:\n- HTTP GET/POST to APIs from ESP.\n- NTP time sync.\n- Rate-limit uploads.\n- API keys not in public code.\n- Graceful offline buffering idea.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-c-cpp",
+      "description": "C/C++ for Arduino: types, memory, and pitfalls on MCUs",
+      "icon": "🧠",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "c++",
+        "embedded",
+        "memory",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-c-cpp",
+        "icon": "🧠",
+        "description": "C/C++ for Arduino: types, memory, and pitfalls on MCUs",
+        "trigger": "arduino c++|progmem|sram|ذاكرة أردوينو",
+        "body": "# C/C++ on MCU\nEmbedded C++:\n- Prefer fixed sizes (`uint8_t`…).\n- Flash vs RAM (F() macro / PROGMEM awareness on AVR).\n- Avoid dynamic allocation in tight loops.\n- String vs char buffer tradeoffs on Uno.\n- Undefined behavior and volatile for hardware regs.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-shields",
+      "description": "Using shields and modules without pin clashes",
+      "icon": "🛡️",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "shields",
+        "modules",
+        "hardware",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-shields",
+        "icon": "🛡️",
+        "description": "Using shields and modules without pin clashes",
+        "trigger": "shield|module|درع|مودول",
+        "body": "# Shields & Modules\nModules:\n- Pin usage maps — avoid conflicts.\n- SPI sharing and CS lines.\n- Stacked shields caveats.\n- Clone module quality variance.\n- Bring up one module at a time.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-ota",
+      "description": "OTA updates for ESP boards",
+      "icon": "📡",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "esp32",
+        "ota",
+        "firmware",
+        "iot",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-ota",
+        "icon": "📡",
+        "description": "OTA updates for ESP boards",
+        "trigger": "ota|over the air|تحديث لاسلكي",
+        "body": "# OTA Updates\nESP OTA:\n- Basic ArduinoOTA / PlatformIO OTA flow.\n- Network security (password at minimum).\n- Fail-safe: keep serial upload path.\n- Don't brick: dual-partition awareness high-level.\n- Version reporting via Serial/MQTT.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-test-bench",
+      "description": "Lab workflow: multimeter checks, serial logs, staged tests",
+      "icon": "🔬",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "testing",
+        "electronics",
+        "lab",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-test-bench",
+        "icon": "🔬",
+        "description": "Lab workflow: multimeter checks, serial logs, staged tests",
+        "trigger": "multimeter|test bench|فحص|مختبر",
+        "body": "# Test Bench\nSafe lab habits:\n- Smoke test power before MCU.\n- Continuity checks.\n- Minimal sketch per subsystem.\n- Log expected vs measured voltages.\n- Change one variable at a time.\n- ESD and short avoidance reminders.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-code-structure",
+      "description": "Organize larger Arduino projects into tabs/modules",
+      "icon": "📁",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "architecture",
+        "firmware",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-code-structure",
+        "icon": "📁",
+        "description": "Organize larger Arduino projects into tabs/modules",
+        "trigger": "arduino project structure|tabs|modular sketch",
+        "body": "# Arduino Project Structure\nScale beyond one file:\n- Split sensors, network, UI.\n- Header/implementation or .ino tabs.\n- Config header for pins.\n- State machine for app flow.\n- PlatformIO src/ layout when applicable.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-rtos-lite",
+      "description": "FreeRTOS tasks on ESP32 at an introductory level",
+      "icon": "🧵",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "esp32",
+        "freertos",
+        "rtos",
+        "embedded",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-rtos-lite",
+        "icon": "🧵",
+        "description": "FreeRTOS tasks on ESP32 at an introductory level",
+        "trigger": "freertos|tasks|esp32 rtos",
+        "body": "# FreeRTOS Lite (ESP32)\nTasks basics:\n- When loop() is enough vs tasks.\n- xTaskCreate high-level.\n- Queue for inter-task data.\n- Avoid blocking shared buses without care.\n- Start simple — concurrency bugs are hard on bare metal.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-bluetooth",
+      "description": "Bluetooth Serial / BLE basics on ESP32",
+      "icon": "🔵",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "esp32",
+        "bluetooth",
+        "ble",
+        "arduino",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-bluetooth",
+        "icon": "🔵",
+        "description": "Bluetooth Serial / BLE basics on ESP32",
+        "trigger": "bluetooth|ble|esp32 bt|بلوتوث",
+        "body": "# Bluetooth on ESP\nBT/BLE:\n- Classic Bluetooth Serial vs BLE roles.\n- Power and pairing UX.\n- Minimal UART-over-BT example idea.\n- BLE: service/characteristic concept.\n- Not all Arduino boards have BT — ESP32 focused.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-ir-rf",
+      "description": "IR remotes and simple RF modules (433MHz) basics",
+      "icon": "📻",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "ir",
+        "rf",
+        "wireless",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-ir-rf",
+        "icon": "📻",
+        "description": "IR remotes and simple RF modules (433MHz) basics",
+        "trigger": "infrared|ir remote|433mhz|rf|ريموت",
+        "body": "# IR & RF Basics\nSimple wireless:\n- IR receive/decode libraries high-level.\n- 433MHz modules: pair TX/RX, legal power caution by region (user responsibility).\n- Noise and false triggers.\n- Protocol identification before automate.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
+    },
+    {
+      "name": "arduino-safety",
+      "description": "Electrical safety and project risk notes for hobby electronics",
+      "icon": "⚠️",
+      "author": "Ahmed Elkady",
+      "tags": [
+        "arduino",
+        "safety",
+        "electronics",
+        "embedded-arduino"
+      ],
+      "source": "inline",
+      "package": "embedded-arduino",
+      "skill": {
+        "name": "arduino-safety",
+        "icon": "⚠️",
+        "description": "Electrical safety and project risk notes for hobby electronics",
+        "trigger": "safety|مخاطر|سلامة|جهد عالي",
+        "body": "# Electronics Safety\nSafety-first guidance:\n- Stay on low-voltage hobby DC unless user is qualified.\n- Mains/AC: redirect to qualified practices — do not guide unsafe mains wiring.\n- Li-ion handling caution.\n- Fire risk with wrong wiring/batteries.\n- Protective eyewear when soldering.\n- This is educational hobby guidance, not certified electrical engineering.",
+        "tools": [],
+        "references": {},
+        "scripts": {}
+      }
     }
   ]
 }
